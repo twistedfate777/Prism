@@ -164,7 +164,8 @@ export default function LandingPage() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
             {/* Large Image Card */}
-            <div className="md:col-span-8 rounded-2xl overflow-hidden relative soft-shadow group bg-surface-container">
+            <div className="md:col-span-8 rounded-2xl overflow-hidden relative soft-shadow group">
+              <div className="bg-cover bg-center w-full h-full absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAldafS8aV3B2h-Yin921PoWaPTx9ExUBNE37BOT796EC7jzjAAM-ygzOUxPEEr-C5No8z6bOPf12hdir6vHhnRS3Eb8vUf-lRermjGvtWBGgn0Ksdu2KyGvwM6vl4BJ4PTJA_kCinet2D4vLAZCXuSwCueHPsSAqbI6C5kavoOexzsWN4QyVUR4tfUo_xiYkQuqrgB7weTVmTE49tHczDb22Tei1uFCiKEVdkxY4KNbZ8HPUZiiaJ9')` }}></div>
               <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8 w-full md:w-2/3">
                 <div className="inline-block px-3 py-1 bg-surface/80 backdrop-blur-sm rounded-full text-primary font-label-sm mb-3">Designed for Focus</div>
@@ -192,13 +193,9 @@ export default function LandingPage() {
                 Read Privacy Policy <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </a>
             </div>
-            {/* Video Card */}
-            <div className="md:col-span-7 rounded-2xl overflow-hidden relative soft-shadow group bg-surface-container">
-              <div className="absolute inset-0 flex items-center justify-center bg-surface/20 backdrop-blur-[2px]">
-                <button className="w-16 h-16 bg-surface/90 backdrop-blur-md rounded-full shadow-md flex items-center justify-center text-primary-container hover:scale-110 transition-transform hover:text-secondary">
-                  <span className="material-symbols-outlined filled-icon text-[32px]">play_arrow</span>
-                </button>
-              </div>
+            {/* Image Card */}
+            <div className="md:col-span-7 rounded-2xl overflow-hidden relative soft-shadow group min-h-[300px]">
+              <div className="bg-cover bg-center w-full h-full absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjCi_YvdU0bt-6HYnCS8pwX8mjuqvYlz9jGLwflAsSi6Ie4GKCrl-c1vAYIoU3Fu5033fztN2t6Fjd7YBATqCOrDYX0DQnlCWQ6BEwTw48ig67A-W-2NVdy-Joh4i7DIOF8CqXrvXca2xL5gCVNDx3QJbbG0nueT31omlkkmBII5ZN17j7D-saBqpBMG0bmdAFsmG9gMMd1WFFj0MsCBxBfdknimwLaqx-6rRLtIA0pJIsM1nX503-')` }}></div>
             </div>
           </div>
         </div>
