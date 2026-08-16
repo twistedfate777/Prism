@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+.filled-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Elevation */
+.soft-shadow {
+  box-shadow: 0 4px 20px rgba(20, 21, 88, 0.04);
+}
+
+/* Animations */
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.path-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawPath 3s linear infinite;
+}
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Selection card states (context selection) */
+.selection-card {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.selection-card:hover {
+  border-color: #c7c5d2;
+  box-shadow: 0 4px 20px rgba(20, 21, 88, 0.04);
+}
+.card-selected {
+  border-color: #2b2d6e;
+  background-color: #f6f2f9;
+}
+.card-selected .check-badge {
+  opacity: 1;
+  transform: scale(1);
+}
+.check-badge {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Upload zone drag state */
+.upload-zone.dragover {
+  background-color: #f6f2f9;
+  border-color: #141558;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRISM - Before You Share</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        surface: "#FFFFFF",
+                        "surface-container-low": "#F8F9FA",
+                        "surface-container-tertiary": "#F1F3F5",
+                        primary: "#3730A3",
+                        "primary-container": "#E0E7FF",
+                        "on-primary-container": "#312E81",
+                        "on-surface-variant": "#4B5563",
+                        "outline-variant": "#D1D5DB",
+                        coral: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            600: '#dc2626',
+                            700: '#b91c1c'
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            600: '#d97706',
+                            700: '#b45309'
+                        },
+                        indigo: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            600: '#4f46e5',
+                            700: '#4338ca'
+                        },
+                        emerald: {
+                            50: '#ecfdf5',
+                            600: '#059669',
+                            700: '#047857'
+                        }
+                    },
+                    fontFamily: {
+                        headline: ["Public Sans", "sans-serif"],
+                        display: ["Public Sans", "sans-serif"],
+                        body: ["Public Sans", "sans-serif"],
+                        label: ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<main class="w-full max-w-[560px]">
+<div class="bg-surface rounded-2xl shadow-sm border border-outline-variant/30 overflow-hidden">
+<div class="p-8 sm:p-10 flex flex-col items-center text-center">
+<!-- Header Badge -->
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium mb-6">
+<span class="material-symbols-outlined text-[16px] mr-1.5" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+                    Social Media
+                </div>
+<!-- Main Title -->
+<h1 class="text-3xl sm:text-4xl font-headline font-bold text-primary mb-2 tracking-tight">Take a Moment.</h1>
+<p class="text-on-surface-variant text-base mb-10">We noticed a few details worth considering before you proceed.</p>
+<!-- Sections Container -->
+<div class="w-full space-y-4 text-left">
+<!-- Section 1: Things to Fix (Coral) -->
+<div class="bg-coral-50 rounded-xl p-5 border border-coral-100 flex items-start">
+<div class="flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-coral-600" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div class="ml-4">
+<h3 class="text-sm font-label font-bold text-coral-700 tracking-wide uppercase mb-1">Things to Fix</h3>
+<p class="text-coral-700 text-sm leading-relaxed">This photo includes someone else's face — they may not expect it to be reshared publicly.</p>
+</div>
+</div>
+<!-- Section 2: Worth a Pause (Amber) -->
+<div class="bg-amber-50 rounded-xl p-5 border border-amber-100 flex items-start">
+<div class="flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-amber-600" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="ml-4">
+<h3 class="text-sm font-label font-bold text-amber-700 tracking-wide uppercase mb-1">Worth a Pause</h3>
+<p class="text-amber-700 text-sm leading-relaxed">This caption uses urgent language — is that intentional?</p>
+</div>
+</div>
+<!-- Section 3: Good to Know (Indigo) -->
+<div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex items-start">
+<div class="flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-indigo-600" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div class="ml-4">
+<h3 class="text-sm font-label font-bold text-indigo-700 tracking-wide uppercase mb-1">Good to Know</h3>
+<p class="text-indigo-700 text-sm leading-relaxed">This information may have been updated since it was originally shared. See latest context.</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full mt-10 space-y-3">
+<button class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors duration-200">
+<span class="material-symbols-outlined mr-2 text-[20px]">shield</span>
+                        Protect &amp; Fix
+                    </button>
+<button class="w-full flex justify-center items-center py-3.5 px-4 border border-outline-variant rounded-lg shadow-sm text-base font-medium text-on-surface-variant bg-surface hover:bg-surface-container-tertiary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                        Continue Anyway
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PRISM - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fcf8ff",
+                        "on-secondary-fixed-variant": "#005142",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1b20",
+                        "tertiary": "#301c00",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "on-primary-fixed": "#101054",
+                        "on-secondary-container": "#00705c",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f3eff6",
+                        "secondary": "#006b58",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c0c1ff",
+                        "on-surface-variant": "#464650",
+                        "primary": "#141558",
+                        "secondary-fixed": "#70f9d7",
+                        "surface-variant": "#e4e1e8",
+                        "on-primary-fixed-variant": "#3d4081",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e4e1e8",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf8ff",
+                        "on-tertiary-container": "#d59024",
+                        "primary-fixed": "#e1e0ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "outline": "#777681",
+                        "surface-dim": "#dcd9df",
+                        "background": "#fcf8ff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#9597df",
+                        "tertiary-fixed-dim": "#ffb958",
+                        "tertiary-container": "#4c2f00",
+                        "primary-container": "#2b2d6e",
+                        "tertiary-fixed": "#ffddb5",
+                        "inverse-surface": "#303035",
+                        "secondary-fixed-dim": "#4fdcbc",
+                        "surface-container": "#f0ecf3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#002019",
+                        "surface-container-low": "#f6f2f9",
+                        "on-tertiary-fixed": "#2a1800",
+                        "outline-variant": "#c7c5d2",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7ed",
+                        "secondary-container": "#6df6d4",
+                        "surface-tint": "#55589b",
+                        "on-background": "#1b1b20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px",
+                        "section-gap": "64px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen font-body-md text-body-md flex md:flex-row flex-col">
+<!-- Top Navigation (Mobile) -->
+<nav class="md:hidden flex justify-between items-center w-full px-container-padding-mobile h-16 bg-surface dark:bg-surface shadow-sm z-50 fixed top-0 left-0">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">PRISM</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="settings">settings</span>
+</div>
+</nav>
+<!-- Side Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-dim shadow-sm py-base z-40 overflow-y-auto">
+<div class="px-6 py-4 flex flex-col items-start gap-1">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">PRISM</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Digital Mindfulness</span>
+</div>
+<div class="px-6 py-4">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded-xl font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity">New Check</button>
+</div>
+<nav class="flex-1 mt-4 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 Active: translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-auto px-2 pb-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-[1200px] mx-auto md:ml-64 pt-20 md:pt-12 px-container-padding-mobile md:px-container-padding-desktop pb-24 md:pb-12 min-h-screen">
+<!-- Header Section -->
+<header class="mb-section-gap flex flex-col md:flex-row items-start md:items-center gap-6">
+<div class="w-24 h-24 rounded-full overflow-hidden shadow-lg shadow-primary/5 bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-quality, professional, yet approachable portrait photograph of a young professional in a minimalist setting. The lighting is soft and natural, emphasizing a calm and focused demeanor. The background is a clean, out-of-focus light gray wall. The overall aesthetic is clean, modern, and aligned with a sophisticated editorial lifestyle feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9_lwYsB4sbYFxIj6CXEmLgShVYWxzZeOVxT_x3QtZeD9tPCcglqbPhSZ8b8XfuXvDw1kDxYTUa4cO03rhF0xkYH0cF0L4BML0Nnb3JgnhPZC_vulXPZbKXqFfU16saOH4RKbC5OsYb8phccbgaV4an89UIQJG-fIXh349TAIWnWqnO8Ka5lJEBivOn3wlWbz3C5u_jy1csYDd3TKFFTy4qnEayJkrQzL2jPSLsPBrIICiUyMiKxh2">
+</div>
+<div class="flex-1">
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-surface mb-2">Alex Rivera</h1>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-body-md text-body-md">Digital Guardian since Oct 2023</span>
+</div>
+</div>
+<button class="hidden md:flex items-center gap-2 bg-surface-container-low text-primary px-6 py-3 rounded-xl border border-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+<span class="font-label-md text-label-md">Edit Profile</span>
+</button>
+</header>
+<!-- Journey Overview Section -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Journey Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Checks Completed Card -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-[0_4px_20px_rgba(20,21,88,0.04)] flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl group-hover:bg-primary-container/20 transition-all duration-500"></div>
+<div class="flex items-center justify-between z-10">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Checks Completed</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+</div>
+</div>
+<div class="z-10 mt-4">
+<span class="font-display-lg text-display-lg text-on-surface">124</span>
+</div>
+</div>
+<!-- Insights Gained Card -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-[0_4px_20px_rgba(20,21,88,0.04)] flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl group-hover:bg-secondary-container/20 transition-all duration-500"></div>
+<div class="flex items-center justify-between z-10">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Insights Gained</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+</div>
+</div>
+<div class="z-10 mt-4">
+<span class="font-display-lg text-display-lg text-on-surface">42</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Responsibility History Section -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Responsibility History</h2>
+<div class="flex flex-col gap-4">
+<!-- Selected/Active Item -->
+<div class="bg-surface-container-lowest rounded-[16px] p-4 shadow-[0_12px_40px_rgba(20,21,88,0.08)] ring-1 ring-primary/20 flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all relative overflow-visible cursor-pointer z-20 transform scale-[1.01]">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A beautifully composed abstract editorial image representing climate policy. It features soft, overlapping translucent shapes in pale blues and greens, evoking a sense of atmospheric calm and environmental focus. The lighting is diffused, giving a serene, modern aesthetic suitable for a high-end corporate or wellness app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsciIg7BUYlfKGBotnQX6QnBV0R62BhAZBEhcr1ODGJInA7HvgbdLwfbzglTVM7F06vPt97MOfGmSF6QSS5c_TLD3EQj5oL0uGz8-MNKm8sE2FTVXcwYAA6qjMSj-SNTcA9DSxPXxwC9-Sy75NOO2cYAGGRNyTbluzS2H_QaR61v-tZrh3ZCeU0JIF_AzQ5VA0xBG2ezB7QdhGyTKq4_7csIsEu_OHHNv6VNMxhtbZHL0Th2Tgh8gv">
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-md text-headline-md text-on-surface truncate text-lg">Article: Climate Policy Update</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Oct 24, 2023 • 10:30 AM</p>
+</div>
+<div class="flex items-center gap-2 shrink-0 mt-2 sm:mt-0">
+<div class="w-3 h-3 rounded-full bg-error" title="High Risk Indicator"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim" title="Medium Risk Indicator"></div>
+<div class="w-3 h-3 rounded-full bg-secondary" title="Low Risk Indicator"></div>
+</div>
+</div>
+<!-- Past Item 1 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-4 shadow-[0_4px_20px_rgba(20,21,88,0.04)] border border-transparent hover:border-surface-variant flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist, abstract digital representation of financial data. Soft, sweeping curves resembling graphs in subtle shades of indigo and pale gray against a clean white background. The composition is airy and composed, conveying clarity and security without tension. High-key lighting, editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDLlprWL3LR0TQR2qPr0i4sQcTFe97CgXWwWHMu1qAafH9UwDHiTfW4RLbfdeBtCEeRoqi6F-syLfLVEH8Tap24T1kgDD7ewKGvMbtcjPZpqdW_uQXMZwvgPB0LTjKyiR5JwOfzPgKf93g-ramcrgpDwKkhWIYeGFNHcNTt05nQCh-n0v1WbIdAk94ibgUIptPTH7O4TgD0TEgUZJCAK89Pz8jBXuaCuyhRFBr35hNN7bp3AElIyEm">
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-md text-headline-md text-on-surface truncate text-lg">Report: Q3 Financial Summary</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Oct 22, 2023 • 2:15 PM</p>
+</div>
+<div class="flex items-center gap-2 shrink-0 mt-2 sm:mt-0">
+<div class="w-3 h-3 rounded-full bg-secondary" title="Low Risk Indicator"></div>
+</div>
+</div>
+<!-- Past Item 2 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-4 shadow-[0_4px_20px_rgba(20,21,88,0.04)] border border-transparent hover:border-surface-variant flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A serene, abstract visual of interconnected nodes and lines, representing social network analysis. The nodes are soft, glowing dots in muted coral and teal, connected by thin, barely-there lines on a bright, off-white background. The overall feel is analytical but peaceful, avoiding any sense of surveillance or alarm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUr86y6OFlZKeWylFz6ttiwb149rVDhFFUbp9JBMgJwIZrPcONbClB-PTZis4q7Y3HTSNTg6GVEGuGBaktecsTMNiv4K2GKdrO4caCdYv-e8rZC6ocDTbh0pn2xlYg1zhD3pCv5hNN-iQ2srwEehXO3dEcEDE9WjgfTnhAX1dzzBuwAVlcPi-rCN4i7zAQXAaB-_w3rU3Nz0Nt8okXZ818dNhkKEl2aF-9PENjUR33sArrUv7FljLG">
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-md text-headline-md text-on-surface truncate text-lg">Social Media Post Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Oct 20, 2023 • 9:05 AM</p>
+</div>
+<div class="flex items-center gap-2 shrink-0 mt-2 sm:mt-0">
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim" title="Medium Risk Indicator"></div>
+<div class="w-3 h-3 rounded-full bg-secondary" title="Low Risk Indicator"></div>
+</div>
+</div>
+<button class="mt-4 text-primary font-label-md text-label-md hover:underline self-center bg-transparent py-2">View Full History</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-white/80 backdrop-blur-md shadow-[0_-4px_20px_rgba(43,45,110,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-label-sm text-label-sm-mobile">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm-mobile">Metrics</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-label-sm text-label-sm-mobile">Profile</span>
+</a>
+</nav>
+</body></html>

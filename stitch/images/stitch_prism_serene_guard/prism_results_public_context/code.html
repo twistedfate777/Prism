@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRISM - Before You Share</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {},
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    spacing: {},
+                    fontFamily: {
+                        "headline": ["Public Sans", "sans-serif"],
+                        "display": ["Public Sans", "sans-serif"],
+                        "body": ["Public Sans", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    },
+                    fontSize: {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FAFAFA;
+        }
+    </style>
+</head>
+<body class="font-body text-gray-900 antialiased flex flex-col min-h-screen">
+<header class="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center px-6 max-w-[1200px] mx-auto h-20 w-full">
+<div class="font-headline text-2xl font-bold tracking-tight text-indigo-900">
+                PRISM
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+</nav>
+<div class="flex items-center gap-4 text-indigo-900">
+<button class="p-2 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center py-16 px-4 sm:px-6 relative overflow-hidden">
+<div class="absolute inset-0 z-0 pointer-events-none opacity-40">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[50%] rounded-full bg-indigo-100 blur-[100px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[50%] rounded-full bg-emerald-50 blur-[100px]"></div>
+</div>
+<div class="relative z-10 w-full max-w-2xl bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 sm:p-12">
+<div class="flex justify-center mb-8">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 font-label font-semibold text-sm tracking-wide">
+<span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+                    Public
+                </span>
+</div>
+<div class="text-center mb-10">
+<h1 class="font-headline text-4xl sm:text-5xl font-bold text-indigo-950 tracking-tight mb-4">Take a Moment.</h1>
+<p class="font-body text-lg text-gray-600 max-w-lg mx-auto leading-relaxed">
+                    We noticed a few details worth considering before you proceed.
+                </p>
+</div>
+<div class="space-y-4 mb-12">
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-red-50/80 border border-red-100">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-red-600" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+<div>
+<h3 class="font-label font-bold text-red-900 tracking-wide text-xs uppercase mb-1">Things to Fix (Protect)</h3>
+<p class="font-body text-sm text-red-800 leading-relaxed">
+                            This includes another person's face and contact info, and this is going out publicly — have they agreed to that?
+                        </p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-amber-50/80 border border-amber-100">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-amber-600" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<h3 class="font-label font-bold text-amber-900 tracking-wide text-xs uppercase mb-1">Worth a Pause (Think)</h3>
+<p class="font-body text-sm text-amber-800 leading-relaxed">
+                            This message uses strong urgency language. What evidence would you want to check first before reacting?
+                        </p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-blue-50/80 border border-blue-100">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-blue-600" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+<div>
+<h3 class="font-label font-bold text-blue-900 tracking-wide text-xs uppercase mb-1">Good to Know (Verify)</h3>
+<p class="font-body text-sm text-blue-800 leading-relaxed">
+                            This information may have been updated since it was originally shared. Consider checking against a primary source.
+                        </p>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="w-full sm:w-auto px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-label font-semibold rounded-xl shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+                    Protect &amp; Fix
+                </button>
+<button class="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-label font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2">
+                    Continue Anyway
+                </button>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t border-gray-200/50 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-6 max-w-[1200px] mx-auto w-full gap-8">
+<div class="font-headline text-lg font-bold text-gray-900">
+                PRISM
+            </div>
+<div class="flex flex-wrap justify-center gap-6 text-sm font-label text-gray-500">
+<a class="hover:text-indigo-600 transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="hover:text-indigo-600 transition-colors duration-300" href="#">Terms of Service</a>
+<a class="hover:text-indigo-600 transition-colors duration-300" href="#">Ethical Standards</a>
+</div>
+<div class="text-sm font-body text-gray-500 text-center md:text-right">
+                © 2024 PRISM. Mindful protection for a digital world.
+            </div>
+</div>
+</footer>
+</body></html>

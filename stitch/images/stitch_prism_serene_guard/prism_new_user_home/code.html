@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PRISM - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf8ff",
+                        "on-background": "#1b1b20",
+                        "surface-dim": "#dcd9df",
+                        "on-secondary-container": "#00705c",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#3d4081",
+                        "surface-container": "#f0ecf3",
+                        "on-primary-fixed": "#101054",
+                        "secondary-fixed-dim": "#4fdcbc",
+                        "surface-container-low": "#f6f2f9",
+                        "surface": "#fcf8ff",
+                        "on-tertiary-fixed": "#2a1800",
+                        "tertiary-fixed-dim": "#ffb958",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3eff6",
+                        "on-secondary-fixed-variant": "#005142",
+                        "on-primary-container": "#9597df",
+                        "tertiary-container": "#4c2f00",
+                        "on-surface-variant": "#464650",
+                        "surface-container-highest": "#e4e1e8",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303035",
+                        "secondary": "#006b58",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#d59024",
+                        "surface-variant": "#e4e1e8",
+                        "inverse-primary": "#c0c1ff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-bright": "#fcf8ff",
+                        "secondary-container": "#6df6d4",
+                        "on-secondary-fixed": "#002019",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "primary-container": "#2b2d6e",
+                        "on-surface": "#1b1b20",
+                        "secondary-fixed": "#70f9d7",
+                        "outline": "#777681",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#301c00",
+                        "tertiary-fixed": "#ffddb5",
+                        "surface-tint": "#55589b",
+                        "outline-variant": "#c7c5d2",
+                        "surface-container-high": "#eae7ed",
+                        "primary": "#141558"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "40px",
+                        "section-gap": "64px",
+                        "base": "8px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-background shadow-sm bg-surface/80 backdrop-blur-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] sticky top-0 z-50">
+<div class="flex justify-between items-center px-container-padding-desktop max-w-[1200px] mx-auto h-20 w-full">
+<div class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">
+                PRISM
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center py-section-gap px-container-padding-mobile md:px-container-padding-desktop max-w-[1200px] mx-auto w-full">
+<!-- Hero Section -->
+<div class="w-full max-w-3xl mx-auto text-center flex flex-col items-center gap-8 mb-section-gap">
+<div class="w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center">
+<img alt="Illustration" class="w-full h-full object-contain mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVISsBhDwwhTfTiTmgMvJl00mw4PFjCabYBIDMqSv46h_3w12resTnlukfqsiRMCMuww9MDrJqGD1JMbmOsR2VrxI1XbVFJKQ0a1yeQFsNSUccUhzWfewrM8g5Fr84ZOWv89EHZHyQixWCN13temfreDVwSuFpDX9Qc0IIuRKcc8g2XTPf4lKH4N8QppaMjoHs7rSgR1eDcBWRAUW9IiI7vkeIqoGlrshS18XdLfiYSjbMn67YIBV9">
+</div>
+<div class="space-y-4">
+<h1 class="font-display-lg text-display-lg text-primary">Nothing to show yet — let's change that</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Check your first piece of content before you share it anywhere.</p>
+</div>
+<!-- Primary CTA Card -->
+<button class="group w-full max-w-lg mt-8 bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 shadow-[0px_4px_20px_rgba(20,21,88,0.04)] hover:shadow-[0px_12px_40px_rgba(20,21,88,0.08)] transition-all duration-300 flex flex-col items-center gap-6 relative overflow-hidden text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<!-- Decorative border -->
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-fixed"></div>
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary-container group-hover:text-on-primary-container transition-all duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="upload_file">upload_file</span>
+</div>
+<div class="text-center">
+<span class="font-headline-md text-headline-md text-primary block mb-2 group-hover:text-primary-container transition-colors">Check something now <span class="inline-block transform group-hover:translate-x-1 transition-transform">→</span></span>
+</div>
+</button>
+</div>
+<!-- Preview Section -->
+<div class="w-full mt-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Locked Card 1 -->
+<div class="bg-surface-container-low/50 border border-outline-variant/20 rounded-xl p-6 flex flex-col gap-4 opacity-60 grayscale-[0.5] relative overflow-hidden">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+<h3 class="font-label-md text-label-md font-semibold">Your Responsibility Profile</h3>
+</div>
+<div class="flex items-center gap-2 mt-auto text-on-surface-variant/70">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">Unlocks after your first check</span>
+</div>
+</div>
+<!-- Locked Card 2 -->
+<div class="bg-surface-container-low/50 border border-outline-variant/20 rounded-xl p-6 flex flex-col gap-4 opacity-60 grayscale-[0.5] relative overflow-hidden">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="model_training">model_training</span>
+<h3 class="font-label-md text-label-md font-semibold">Practice Mode</h3>
+</div>
+<div class="flex items-center gap-2 mt-auto text-on-surface-variant/70">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">Unlocks after your first check</span>
+</div>
+</div>
+<!-- Locked Card 3 -->
+<div class="bg-surface-container-low/50 border border-outline-variant/20 rounded-xl p-6 flex flex-col gap-4 opacity-60 grayscale-[0.5] relative overflow-hidden">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<h3 class="font-label-md text-label-md font-semibold">Community Reports</h3>
+</div>
+<div class="flex items-center gap-2 mt-auto text-on-surface-variant/70">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">Unlocks after your first check</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container border-t border-outline-variant/30 py-section-gap mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding-desktop max-w-[1200px] mx-auto w-full gap-8">
+<div class="font-headline-md text-headline-md text-on-surface">
+                PRISM
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">Ethical Standards</a>
+</div>
+<div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+                © 2024 PRISM. Mindful protection for a digital world.
+            </div>
+</div>
+</footer>
+</body></html>

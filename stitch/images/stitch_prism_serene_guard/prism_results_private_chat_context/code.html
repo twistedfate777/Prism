@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Take a Moment - PRISM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        surface: "#FFFFFF",
+                        "surface-container-low": "#F8FAFC",
+                        "surface-container-tertiary": "#F1F5F9",
+                        primary: "#0F172A",
+                        "primary-fixed-dim": "#334155",
+                        "on-surface-variant": "#64748B",
+                        "outline-variant": "#E2E8F0",
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857'
+                        },
+                        indigo: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5'
+                        },
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48'
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        },
+                        sky: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7'
+                        }
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        headline: ["Plus Jakarta Sans", "sans-serif"],
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                        label: ["Plus Jakarta Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex flex-col justify-center items-center p-4 antialiased">
+<!-- Top Navigation (Suppressed per instructions for task-focused transactional screens, but keeping a minimalist version if it acts as a global overlay, but instruction says "suppress if transactional". So omitting full TopNavBar, but rendering the "Destination badge" as requested within the UI). -->
+<!-- The prompt says: "Create a variant of the 'Before You Share' Context Cue Card... Destination badge at the top: '→ Private Chat' in a small indigo pill." -->
+<main class="w-full max-w-lg bg-surface rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-outline-variant/50 overflow-hidden relative">
+<!-- Header / Badge Area -->
+<div class="px-6 pt-8 pb-4 flex flex-col items-center text-center relative z-10">
+<div class="bg-indigo-50 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5 mb-6 border border-indigo-100">
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                Private Chat
+            </div>
+<div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined filled text-rose-500 text-3xl">privacy_tip</span>
+</div>
+<h1 class="font-display text-2xl font-bold text-primary mb-2">Take a Moment</h1>
+<p class="font-body text-on-surface-variant text-sm px-4">
+                We noticed a few details worth considering before you proceed.
+            </p>
+</div>
+<!-- Content Area -->
+<div class="px-6 pb-6 space-y-4 relative z-10">
+<!-- PROTECT (Dominant Section) -->
+<div class="bg-rose-50 border border-rose-100 rounded-xl p-5 relative overflow-hidden group hover:border-rose-200 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-rose-100/50 rounded-full blur-2xl group-hover:bg-rose-200/50 transition-colors"></div>
+<div class="flex gap-4 relative z-10">
+<div class="mt-0.5">
+<span class="material-symbols-outlined filled text-rose-600 text-xl">gpp_maybe</span>
+</div>
+<div>
+<h2 class="font-label text-sm font-bold text-rose-700 uppercase tracking-wider mb-1 flex items-center gap-2">
+                            Things to Fix
+                            <span class="bg-rose-200/50 text-rose-700 text-[10px] px-1.5 py-0.5 rounded font-semibold">PROTECT</span>
+</h2>
+<p class="font-body text-sm text-rose-900 leading-relaxed">
+                            This forwarded message includes a phone number — consider whether the sender meant for it to be shared further.
+                        </p>
+</div>
+</div>
+</div>
+<!-- THINK (Lower Emphasis) -->
+<div class="bg-amber-50/50 border border-amber-100/50 rounded-xl p-4 flex gap-3 opacity-90">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-amber-600 text-lg">psychology</span>
+</div>
+<div>
+<h3 class="font-label text-xs font-bold text-amber-700 uppercase tracking-wider mb-0.5">Worth a Pause</h3>
+<p class="font-body text-xs text-amber-900/80 leading-relaxed">
+                        The tone of the forwarded content might be easily misinterpreted out of context.
+                    </p>
+</div>
+</div>
+<!-- VERIFY (Lower Emphasis) -->
+<div class="bg-sky-50/50 border border-sky-100/50 rounded-xl p-4 flex gap-3 opacity-90">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-sky-600 text-lg">fact_check</span>
+</div>
+<div>
+<h3 class="font-label text-xs font-bold text-sky-700 uppercase tracking-wider mb-0.5">Good to Know</h3>
+<p class="font-body text-xs text-sky-900/80 leading-relaxed">
+                        This message has been forwarded many times. Verify the source if it contains claims.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-6 bg-surface-container-low/50 border-t border-outline-variant/30 flex flex-col gap-3 relative z-10">
+<button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-label font-semibold py-3.5 px-4 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-xl">shield_locked</span>
+                Protect &amp; Fix
+            </button>
+<button class="w-full bg-transparent border border-outline-variant hover:bg-surface-container-tertiary text-primary-fixed-dim font-label font-medium py-3 px-4 rounded-xl transition-colors duration-200">
+                Continue Anyway
+            </button>
+</div>
+</main>
+<!-- Optional Footer just for completeness if requested, but instructions say suppress navigation for task-focused. Footer was in JSON but typically suppressed on popups/cards. Suppressing. -->
+</body></html>

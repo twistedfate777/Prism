@@ -1,0 +1,313 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PRISM - Feed Simulator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1b1b20",
+                    "on-primary-fixed": "#101054",
+                    "inverse-primary": "#c0c1ff",
+                    "secondary-container": "#6df6d4",
+                    "surface-container": "#f0ecf3",
+                    "primary": "#141558",
+                    "primary-fixed": "#e1e0ff",
+                    "on-tertiary-fixed-variant": "#643f00",
+                    "secondary-fixed-dim": "#4fdcbc",
+                    "inverse-on-surface": "#f3eff6",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#2a1800",
+                    "primary-container": "#2b2d6e",
+                    "secondary-fixed": "#70f9d7",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464650",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005142",
+                    "on-surface": "#1b1b20",
+                    "secondary": "#006b58",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-primary-fixed-variant": "#3d4081",
+                    "surface": "#fcf8ff",
+                    "on-tertiary-container": "#d59024",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e4e1e8",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#4c2f00",
+                    "surface-bright": "#fcf8ff",
+                    "on-primary-container": "#9597df",
+                    "on-secondary-container": "#00705c",
+                    "surface-dim": "#dcd9df",
+                    "outline-variant": "#c7c5d2",
+                    "on-secondary-fixed": "#002019",
+                    "tertiary": "#301c00",
+                    "surface-container-low": "#f6f2f9",
+                    "surface-tint": "#55589b",
+                    "inverse-surface": "#303035",
+                    "tertiary-fixed-dim": "#ffb958",
+                    "error": "#ba1a1a",
+                    "outline": "#777681",
+                    "surface-container-highest": "#e4e1e8",
+                    "background": "#fcf8ff",
+                    "tertiary-fixed": "#ffddb5",
+                    "surface-container-high": "#eae7ed",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "gutter": "24px",
+                    "container-padding-desktop": "40px",
+                    "section-gap": "64px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(20, 21, 88, 0.04);
+        }
+        .feedback-shadow {
+            box-shadow: 0 12px 40px rgba(20, 21, 88, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Bar -->
+<header class="w-full top-0 sticky bg-background/90 backdrop-blur-md z-50 py-4 px-container-padding-mobile md:px-container-padding-desktop">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center">
+<button class="flex items-center gap-2 text-outline hover:text-on-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-md text-label-md">Exit practice</span>
+</button>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Post 3 of 8</span>
+<div class="w-24 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[37.5%] rounded-full transition-all duration-500"></div>
+</div>
+</div>
+<div class="w-[88px] hidden md:block"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[600px] mx-auto px-container-padding-mobile md:px-0 py-8 space-y-gutter">
+<!-- Header -->
+<div class="text-center mb-section-gap">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Feed Simulator</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Review the posts below and decide how to interact. Trust your instincts.</p>
+</div>
+<!-- Post 1 (Inactive) -->
+<article class="bg-surface-container-lowest rounded-2xl p-6 card-shadow border border-surface-variant/50">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="A softly lit profile portrait of a smiling young woman with short curly hair, wearing a cozy mustard yellow sweater against a neutral grey background. The style is modern, approachable, and photographic, aligning with a light-mode editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfV9QZghVCc8V2OgNwl3M1g281NkL7PAtTbolVwsJPcMt1g43PoUvOYX3F7Qo2LTS8Gdf0bmReENwDI6scLW5BCf-TFB5iUa_-VXqiG3pehhkybZO7sLfsSRFTUtPK_UJ6RnupYco6aK7fD2_GPUbPxjvB7PrY8xyMjAIOY1K1kikIva58PbW5c4pgauOGM07XxqhVW7LIRqOeNHX9hEPN9NZwFEJ5aa5RZ7H-nTzvuED4Fgjq9CSh">
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Elena Rodriguez</h3>
+<p class="font-label-sm text-label-sm text-outline">@elenarodriguez • 2h ago</p>
+</div>
+</div>
+<div class="mb-4">
+<p class="font-body-md text-body-md text-on-surface mb-3">Just finished reading this incredible breakdown of the new city zoning laws. Finally, someone explains it simply! A must-read if you live in the metropolitan area. 🏙️📈</p>
+<div class="w-full h-48 bg-surface-container rounded-xl overflow-hidden mb-2">
+<img alt="" class="w-full h-full object-cover" data-alt="A high-quality, abstract architectural photography shot showing modern city building facades bathed in warm, golden-hour sunlight against a clear blue sky. The composition emphasizes clean lines, geometric shapes, and a serene, organized urban environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAglQbZ8MKae8_lREV-SGIPKdef_2s5rB1o7oWvq0bQTw63BezPaFny8_F2kRjnnNzNsSt7ZP0-WAe3pLr5cYXzZlhV3MncsiF5IxFjZTs1FBgb77DeAkLqkdD083M68d_Qz6kHElbQyQzuQBY4F14BQ7sdSrM7mGLQ2SsWcasOWVIOhsHnw8uxOY8eX-FqBi0DKWyFGRQ_X3Fw7oNqbicge6EAe-Q2dhuIl45z5B2BxoULWolVZnJr">
+</div>
+</div>
+<div class="flex flex-wrap gap-3 mt-6">
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-secondary text-secondary hover:bg-secondary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+<span class="font-label-md text-label-md">Trust</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-primary text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+<span class="font-label-md text-label-md">Share</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-outline text-outline hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility_off">visibility_off</span>
+<span class="font-label-md text-label-md">Ignore</span>
+</button>
+</div>
+</article>
+<!-- Post 2 (Active/Expanded with Feedback) -->
+<article class="bg-surface-container-lowest rounded-2xl p-6 card-shadow border border-primary/20 relative overflow-hidden">
+<!-- Active Indicator Line -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="A stylized, flat illustration of a professional male avatar wearing glasses and a dark blue shirt, presented in a minimal, modern corporate style against a soft pastel background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7k1u7dWEnoacH_WXH64EVaCWngqUfIGTmxz8nryKSIkSQxN6AUKEoqMecQsO0p6U2D5Nj1G8DRWarU8rSTuHWR4_dTmx3rXzydnZ6nHEMglE_ZQjexfueNA8-_j9HH-hIxt3apZelfWj2KbIpA28TFKnWPgn3n2Uv9fm2loQVgob9nBnDMNiHhTJ1GHU8zTvCd5uz3dVKw4uEPqImOM2WASnwcXgvMliNyG8EExjg9B1REC4cNEAf">
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Tech Insights Daily</h3>
+<p class="font-label-sm text-label-sm text-outline">@techinsights • 5h ago</p>
+</div>
+</div>
+<div class="mb-4">
+<p class="font-body-md text-body-md text-on-surface mb-3">URGENT: This new sweeping update will completely change how you use your devices by tomorrow. If you don't adjust these 5 hidden settings NOW, your data is exposed. Read the full exposé here. 🚨👇</p>
+</div>
+<!-- Disabled Actions (Post-Interaction State) -->
+<div class="flex flex-wrap gap-3 mt-6 mb-4 opacity-50 pointer-events-none">
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-secondary text-secondary bg-transparent">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+<span class="font-label-md text-label-md">Trust</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-primary text-primary bg-transparent">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+<span class="font-label-md text-label-md">Share</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border-2 border-outline bg-surface-variant text-on-surface-variant ring-2 ring-outline/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility_off">visibility_off</span>
+<span class="font-label-md text-label-md">Ignored</span>
+</button>
+</div>
+<!-- Feedback Panel -->
+<div class="bg-secondary-container/20 rounded-[12px] p-4 flex gap-3 items-start border border-secondary/10 mt-2 transition-all duration-500 ease-in-out">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="self_improvement">self_improvement</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-secondary-container mb-1">Mindful Choice</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Good pause. This headline uses strong emotional language and urgency tactics—choosing to ignore or verify independently helps maintain a calm, protected feed.</p>
+</div>
+</div>
+</article>
+<!-- Post 3 (Inactive) -->
+<article class="bg-surface-container-lowest rounded-2xl p-6 card-shadow border border-surface-variant/50">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="A soft, naturalistic photograph of a serene landscape featuring a gentle stream winding through a dense, misty evergreen forest. The mood is calm and restorative, leaning towards a green and earthy color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ_Wanwhy9XeRuwwCm6MsCSSBQiCd2cnF_KfSPDQVso2REgCKP-uwBYa9VMFs5PRAo_x1leCHRIWxqu_okZn61RYheyZj-8wEY0Aer1sAWrsrFpjkvD4uj5_743OZuw7yhhIgRsGP7P_wMYjofHaRGpK8XW6C8zwoKZOKLKYe_oXHSxPwtNYq1nLty_8q7yu1lVvN-AiVWdMcdJyuEtRgcBBSq5hA_BX_hZGwGqyOMjle2cmEzQFqf">
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Nature Conservancy</h3>
+<p class="font-label-sm text-label-sm text-outline">@natureorg • 1d ago</p>
+</div>
+</div>
+<div class="mb-4">
+<p class="font-body-md text-body-md text-on-surface">Local community efforts have successfully restored over 50 acres of wetlands this quarter. A beautiful reminder of what collaborative conservation looks like. 🌱💧</p>
+</div>
+<div class="flex flex-wrap gap-3 mt-6">
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-secondary text-secondary hover:bg-secondary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+<span class="font-label-md text-label-md">Trust</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-primary text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+<span class="font-label-md text-label-md">Share</span>
+</button>
+<button class="flex-1 min-w-[100px] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-outline text-outline hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility_off">visibility_off</span>
+<span class="font-label-md text-label-md">Ignore</span>
+</button>
+</div>
+</article>
+<!-- Next Button -->
+<div class="pt-8 flex justify-center pb-section-gap">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-3 px-8 rounded-xl shadow-sm hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span>Continue Practice</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>
