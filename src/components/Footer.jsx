@@ -14,10 +14,10 @@ export default function Footer() {
           </p>
         </div>
         <nav className="flex flex-wrap justify-center gap-6 md:gap-8">
-          <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-          <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-          <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Security Disclosure</a>
-          <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+          <Link className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" to="/platform">Platform</Link>
+          <Link className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" to="/trust">Privacy & trust</Link>
+          <Link className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" to="/principles">Principles</Link>
+          <Link className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" to="/check">Start a check</Link>
         </nav>
       </div>
     </footer>

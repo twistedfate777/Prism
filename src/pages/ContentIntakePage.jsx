@@ -1,21 +1,35 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useScan } from '../context/useScan'
 
 export default function ContentIntakePage() {
   const [hasContent, setHasContent] = useState(false)
   const [fileName, setFileName] = useState('')
   const [dragover, setDragover] = useState(false)
   const fileInputRef = useRef(null)
+  const textareaRef = useRef(null)
   const navigate = useNavigate()
+  const { setUploadedFile, setUploadedText, resetScan } = useScan()
+
+  useEffect(() => {
+    resetScan()
+  }, [resetScan])
+
+  // Reset previous scan state when arriving at this page
+  // (user is starting a new check)
 
   function handleTextChange(e) {
-    setHasContent(e.target.value.trim().length > 0)
+    const value = e.target.value.trim()
+    setHasContent(value.length > 0 || !!fileName)
+    setUploadedText(e.target.value)
   }
 
   function handleFileChange(e) {
     if (e.target.files.length > 0) {
+      const file = e.target.files[0]
       setHasContent(true)
-      setFileName(e.target.files[0].name)
+      setFileName(file.name)
+      setUploadedFile(file)
     }
   }
 
@@ -26,15 +40,23 @@ export default function ContentIntakePage() {
     if (files.length > 0) {
       setHasContent(true)
       setFileName(files[0].name)
+      setUploadedFile(files[0])
     }
+  }
+
+  function handleContinue() {
+    if (!hasContent) return
+    // Also capture textarea value in case onChange missed final state
+    if (textareaRef.current) {
+      setUploadedText(textareaRef.current.value)
+    }
+    navigate('/check/context')
   }
 
   return (
     <div className="flex-grow flex items-center justify-center py-section-gap px-container-padding-mobile md:px-container-padding-desktop">
       <div className="w-full max-w-[560px] bg-white rounded-[16px] shadow-level-1 p-gutter md:p-[48px]">
-        <h1 className="font-headline-md text-headline-md text-primary-container mb-gutter text-center">
-          What are you about to share?
-        </h1>
+        <div className="text-center mb-gutter"><p className="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-3">Step 1 of 3</p><h1 className="font-headline-md text-headline-md text-primary-container">Check something before you share</h1><p className="font-body-md text-body-md text-on-surface-variant mt-3">Paste a message or upload an image. We will help you spot what deserves a pause.</p></div>
 
         {/* Upload Zone */}
         <div
@@ -63,6 +85,7 @@ export default function ContentIntakePage() {
         <div className="mb-gutter relative">
           <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2" htmlFor="text-input">Or paste text directly</label>
           <textarea
+            ref={textareaRef}
             className="w-full rounded-xl border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all font-body-md text-body-md text-on-surface bg-transparent resize-none p-4"
             id="text-input"
             placeholder="Enter content here..."
@@ -79,7 +102,7 @@ export default function ContentIntakePage() {
               : 'bg-surface-container-highest text-outline-variant cursor-not-allowed'
           }`}
           disabled={!hasContent}
-          onClick={() => hasContent && navigate('/check/context')}
+          onClick={handleContinue}
         >
           Continue
           <span className="material-symbols-outlined text-lg">arrow_forward</span>

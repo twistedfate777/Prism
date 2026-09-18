@@ -1,0 +1,20 @@
+{
+  "destinations": [
+    { "value": "social_media", "label": "Social Media", "icon": "image", "modules": ["PROTECT", "THINK"] },
+    { "value": "private_chat", "label": "Private Chat", "icon": "chat_bubble", "modules": ["PROTECT"] },
+    { "value": "ai", "label": "AI", "icon": "auto_awesome", "modules": ["PROTECT", "THINK"] },
+    { "value": "school", "label": "School", "icon": "menu_book", "modules": ["PROTECT", "VERIFY"] },
+    { "value": "public", "label": "Public", "icon": "public", "modules": ["PROTECT", "THINK", "VERIFY"] }
+  ],
+  "ownership": [
+    { "value": "mine", "label": "It's Mine", "icon": "person" },
+    { "value": "someone_else", "label": "Someone Else's", "icon": "person_play" }
+  ],
+  "flagLabels": {
+    "phone_number": "Phone number detected",
+    "email": "Email address detected",
+    "id_number": "ID number detected",
+    "face": "Face detected in image",
+    "academic_record": "Academic record detected"
+  }
+}

@@ -1,18 +1,15 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useScan } from '../context/useScan'
 
-const navItems = [
+const baseNavItems = [
   { to: '/dashboard', icon: 'dashboard', label: 'Dashboard' },
-  { to: '/profile', icon: 'person', label: 'Profile' },
   { to: '/practice', icon: 'psychology', label: 'Insights' },
-]
-
-const bottomItems = [
-  { to: '#', icon: 'help_outline', label: 'Help' },
-  { to: '#', icon: 'logout', label: 'Sign Out' },
 ]
 
 export default function SideNav() {
   const location = useLocation()
+  const { user, signOut } = useScan()
+  const navItems = user ? [...baseNavItems, { to: '/profile', icon: 'person', label: 'Profile' }] : baseNavItems
 
   return (
     <aside className="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low shadow-sm py-base z-40 overflow-y-auto">
@@ -45,12 +42,21 @@ export default function SideNav() {
         })}
       </nav>
       <div className="mt-auto px-2 pb-4 space-y-1">
-        {bottomItems.map(item => (
-          <a key={item.label} href={item.to} className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
-            <span className="material-symbols-outlined">{item.icon}</span>
-            <span className="font-label-md text-label-md">{item.label}</span>
-          </a>
-        ))}
+        <Link to="/trust" className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+          <span className="material-symbols-outlined">help_outline</span>
+          <span className="font-label-md text-label-md">Help</span>
+        </Link>
+        {user ? (
+          <button onClick={signOut} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all text-left">
+            <span className="material-symbols-outlined">logout</span>
+            <span className="font-label-md text-label-md">Sign Out</span>
+          </button>
+        ) : (
+          <Link to="/signup?mode=login" className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+            <span className="material-symbols-outlined">login</span>
+            <span className="font-label-md text-label-md">Sign in</span>
+          </Link>
+        )}
       </div>
     </aside>
   )

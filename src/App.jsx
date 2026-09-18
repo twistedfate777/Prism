@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import DashboardLayout from './components/DashboardLayout'
 
@@ -14,6 +14,20 @@ import BeforeYouSharePage from './pages/BeforeYouSharePage'
 import ProfilePage from './pages/ProfilePage'
 import FeedSimulatorPage from './pages/FeedSimulatorPage'
 import CheckDetailPage from './pages/CheckDetailPage'
+import PlatformPage from './pages/PlatformPage'
+import PrinciplesPage from './pages/PrinciplesPage'
+import TrustPage from './pages/TrustPage'
+import { useScan } from './context/useScan'
+
+function ProfileRoute() {
+  const { user } = useScan()
+  return user ? <DashboardLayout><ProfilePage /></DashboardLayout> : <Navigate to="/signup" replace />
+}
+
+function DetailRoute() {
+  const { user } = useScan()
+  return user ? <DashboardLayout><CheckDetailPage /></DashboardLayout> : <Navigate to="/signup" replace />
+}
 
 export default function App() {
   return (
@@ -22,6 +36,9 @@ export default function App() {
       <Route path="/" element={<Layout><LandingPage /></Layout>} />
       <Route path="/home" element={<Layout><NewUserHome /></Layout>} />
       <Route path="/check" element={<Layout><ContentIntakePage /></Layout>} />
+      <Route path="/platform" element={<Layout><PlatformPage /></Layout>} />
+      <Route path="/principles" element={<Layout><PrinciplesPage /></Layout>} />
+      <Route path="/trust" element={<Layout><TrustPage /></Layout>} />
 
       {/* Standalone pages (own layout) */}
       <Route path="/signup" element={<SignUpPage />} />
@@ -32,8 +49,8 @@ export default function App() {
 
       {/* Dashboard pages with SideNav layout */}
       <Route path="/dashboard" element={<DashboardLayout><DashboardPage /></DashboardLayout>} />
-      <Route path="/profile" element={<DashboardLayout><ProfilePage /></DashboardLayout>} />
-      <Route path="/profile/detail" element={<DashboardLayout><CheckDetailPage /></DashboardLayout>} />
+      <Route path="/profile" element={<ProfileRoute />} />
+      <Route path="/profile/detail" element={<DetailRoute />} />
       <Route path="/practice" element={<DashboardLayout><FeedSimulatorPage /></DashboardLayout>} />
     </Routes>
   )
