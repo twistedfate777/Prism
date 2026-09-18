@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useScan } from '../context/useScan'
+import { apiUrl } from '../lib/api'
 
 export default function PreCheckConfirmPage() {
   const cardRef = useRef(null)
@@ -16,7 +17,7 @@ export default function PreCheckConfirmPage() {
   }, [destination, ownership, navigate])
 
   useEffect(() => {
-    fetch('/api/config')
+    fetch(apiUrl('/api/config'))
       .then(response => response.ok ? response.json() : Promise.reject(new Error('Configuration unavailable')))
       .then(setConfig)
       .catch(() => {})

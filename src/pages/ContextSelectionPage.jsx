@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useScan } from '../context/useScan'
+import { apiUrl } from '../lib/api'
 
 export default function ContextSelectionPage() {
   const { destination, setDestination, ownership: savedOwnership, setOwnership, uploadedFile, uploadedText } = useScan()
@@ -22,7 +23,7 @@ export default function ContextSelectionPage() {
   useEffect(() => {
     async function loadConfig() {
       try {
-        const response = await fetch('/api/config')
+        const response = await fetch(apiUrl('/api/config'))
         if (!response.ok) throw new Error('Configuration unavailable')
         const config = await response.json()
         setDestinations(config.destinations || [])

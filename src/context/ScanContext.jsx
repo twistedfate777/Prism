@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import { ScanContext } from './scanContextValue'
+import { apiUrl } from '../lib/api'
 
 /**
  * ScanProvider — holds all state for the Golden Path flow.
@@ -47,7 +48,7 @@ export function ScanProvider({ children }) {
       }
       formData.append('destination', destination || 'social_media')
 
-      const response = await fetch('/api/scan', {
+      const response = await fetch(apiUrl('/api/scan'), {
         method: 'POST',
         body: formData,
       })
@@ -105,7 +106,7 @@ export function ScanProvider({ children }) {
     setIsActing(true)
 
     try {
-      const response = await fetch('/api/action', {
+      const response = await fetch(apiUrl('/api/action'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
