@@ -28,12 +28,12 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
               <Link to="/check" className="inline-flex justify-center items-center gap-2 bg-secondary hover:bg-secondary/90 text-on-secondary px-8 py-4 rounded-2xl font-label-md transition-all shadow-sm hover:shadow-md">
-                Try PRISM
+                Check something now
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
               </Link>
-              <a href="#features" className="inline-flex justify-center items-center gap-2 bg-transparent border border-outline-variant hover:bg-surface-container-low text-on-surface px-8 py-4 rounded-2xl font-label-md transition-all">
+              <Link to="/principles" className="inline-flex justify-center items-center gap-2 bg-transparent border border-outline-variant hover:bg-surface-container-low text-on-surface px-8 py-4 rounded-2xl font-label-md transition-all">
                 View Principles
-              </a>
+              </Link>
             </div>
           </div>
           {/* Hero Visual */}

@@ -1,24 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-
-const destinations = [
-  { icon: 'image', label: 'Social Media', value: 'social-media' },
-  { icon: 'chat_bubble', label: 'Private Chat', value: 'private-chat' },
-  { icon: 'auto_awesome', label: 'AI', value: 'ai' },
-  { icon: 'menu_book', label: 'School', value: 'school' },
-  { icon: 'public', label: 'Public', value: 'public' },
-]
-
-const ownership = [
-  { icon: 'person', label: "It's Mine" },
-  { icon: 'person_play', label: "Someone Else's" },
-]
+import { useScan } from '../context/useScan'
+import { apiUrl } from '../lib/api'
 
 export default function ContextSelectionPage() {
-  const [selectedDest, setSelectedDest] = useState(null)
-  const [selectedOwner, setSelectedOwner] = useState(null)
+  const { destination, setDestination, ownership: savedOwnership, setOwnership, uploadedFile, uploadedText } = useScan()
+  const [destinations, setDestinations] = useState([])
+  const [ownershipOptions, setOwnershipOptions] = useState([])
+  const [configError, setConfigError] = useState(null)
+  const [selectedDest, setSelectedDest] = useState(destination)
+  const [selectedOwner, setSelectedOwner] = useState(savedOwnership)
   const navigate = useNavigate()
-  const canSubmit = selectedDest !== null && selectedOwner !== null
+  const canSubmit = selectedDest !== null && selectedOwner !== null && destinations.length > 0 && ownershipOptions.length > 0
+
+  // Redirect if no content was uploaded
+  useEffect(() => {
+    if (!uploadedFile && !uploadedText) {
+      navigate('/check', { replace: true })
+    }
+  }, [uploadedFile, uploadedText, navigate])
+
+  useEffect(() => {
+    async function loadConfig() {
+      try {
+        const response = await fetch(apiUrl('/api/config'))
+        if (!response.ok) throw new Error('Configuration unavailable')
+        const config = await response.json()
+        setDestinations(config.destinations || [])
+        setOwnershipOptions(config.ownership || [])
+      } catch (error) {
+        setConfigError(error.message)
+      }
+    }
+
+    loadConfig()
+  }, [])
+
+  function handleSubmit() {
+    if (!canSubmit) return
+    setDestination(selectedDest)
+    setOwnership(selectedOwner)
+    navigate('/check/confirm')
+  }
 
   return (
     <div className="min-h-screen bg-surface text-on-surface font-body-md antialiased">
@@ -36,9 +59,12 @@ export default function ContextSelectionPage() {
           {/* Destination */}
           <section className="mb-12">
             <div className="mb-6">
+              <p className="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-3">Step 2 of 3</p>
               <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-container mb-2">Where are you sending this?</h1>
               <p className="font-body-md text-body-md text-on-surface-variant">This helps us check what actually matters for this destination.</p>
             </div>
+            {configError && <p className="mb-4 rounded-lg bg-error-container px-4 py-3 text-sm text-on-error-container">We could not load the available destinations. Please refresh and try again.</p>}
+            {destinations.length === 0 && !configError && <p className="mb-4 text-sm text-on-surface-variant">Loading available destinations...</p>}
             <div className="grid grid-cols-2 gap-4">
               {destinations.map(dest => (
                 <div
@@ -67,13 +93,13 @@ export default function ContextSelectionPage() {
               <p className="font-body-md text-body-md text-on-surface-variant">So we know what to check for.</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {ownership.map(own => (
+              {ownershipOptions.map(own => (
                 <div
-                  key={own.label}
-                  className={`selection-card bg-surface-container-lowest rounded-[16px] p-6 relative shadow-level-1 flex flex-col items-center text-center cursor-pointer ${selectedOwner === own.label ? 'card-selected' : ''}`}
-                  onClick={() => setSelectedOwner(own.label)}
+                  key={own.value}
+                  className={`selection-card bg-surface-container-lowest rounded-[16px] p-6 relative shadow-level-1 flex flex-col items-center text-center cursor-pointer ${selectedOwner === own.value ? 'card-selected' : ''}`}
+                  onClick={() => setSelectedOwner(own.value)}
                 >
-                  <div className={`check-badge absolute top-4 right-4 w-5 h-5 bg-secondary rounded-full flex items-center justify-center ${selectedOwner === own.label ? 'opacity-100 scale-100' : ''}`}>
+                  <div className={`check-badge absolute top-4 right-4 w-5 h-5 bg-secondary rounded-full flex items-center justify-center ${selectedOwner === own.value ? 'opacity-100 scale-100' : ''}`}>
                     <span className="material-symbols-outlined text-[14px] text-white">check</span>
                   </div>
                   <div className="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center mb-4 text-primary">
@@ -92,7 +118,7 @@ export default function ContextSelectionPage() {
                 canSubmit ? 'hover:bg-on-secondary-fixed-variant shadow-[0_4px_12px_rgba(0,107,88,0.3)] active:scale-95' : 'opacity-50 cursor-not-allowed'
               }`}
               disabled={!canSubmit}
-              onClick={() => canSubmit && navigate('/check/confirm', { state: { destination: selectedDest, ownership: selectedOwner } })}
+              onClick={handleSubmit}
             >
               Check This
               <span className="material-symbols-outlined text-[20px]">arrow_forward</span>

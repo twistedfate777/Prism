@@ -1,33 +1,13 @@
-import { useEffect, useRef } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-
-const destinationLabels = {
-  'social-media': { label: 'Social Media', icon: 'image' },
-  'private-chat': { label: 'Private Chat', icon: 'chat_bubble' },
-  ai: { label: 'AI', icon: 'auto_awesome' },
-  school: { label: 'School', icon: 'menu_book' },
-  public: { label: 'Public', icon: 'public' },
-}
-
-const ownershipLabels = {
-  "It's Mine": { label: 'From: Me', icon: 'person' },
-  "Someone Else's": { label: 'From: Someone Else', icon: 'person_play' },
-}
-
-const confirmationText = {
-  'social-media': "We'll check this the way we'd check something posted to social media.",
-  'private-chat': "We'll check this the way we'd check something forwarded to a private chat.",
-  ai: "We'll check this the way we'd check something uploaded to an AI platform.",
-  school: "We'll check this the way we'd check something submitted for school.",
-  public: "We'll check this the way we'd check something shared publicly.",
-}
+import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useScan } from '../context/useScan'
+import { apiUrl } from '../lib/api'
 
 export default function PreCheckConfirmPage() {
   const cardRef = useRef(null)
   const navigate = useNavigate()
-  const location = useLocation()
-
-  const { destination, ownership } = location.state || {}
+  const { destination, ownership, performScan, isScanning, scanError } = useScan()
+  const [config, setConfig] = useState({ destinations: [], ownership: [] })
 
   // Redirect back if no state (direct URL access)
   useEffect(() => {
@@ -35,6 +15,13 @@ export default function PreCheckConfirmPage() {
       navigate('/check/context', { replace: true })
     }
   }, [destination, ownership, navigate])
+
+  useEffect(() => {
+    fetch(apiUrl('/api/config'))
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('Configuration unavailable')))
+      .then(setConfig)
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const card = cardRef.current
@@ -51,10 +38,22 @@ export default function PreCheckConfirmPage() {
     }
   }, [])
 
+  async function handleStartCheck() {
+    try {
+      const result = await performScan()
+      // Navigate to results page using the normalized destination from the result
+      navigate(`/check/results/${result.destination}`)
+    } catch (err) {
+      console.error('Scan failed:', err)
+      // Error is stored in context and handled/displayed in UI below
+    }
+  }
+
   if (!destination || !ownership) return null
 
-  const dest = destinationLabels[destination] || { label: destination, icon: 'arrow_forward' }
-  const own = ownershipLabels[ownership] || { label: ownership, icon: 'person' }
+  const dest = config.destinations.find(item => item.value === destination) || { label: destination, icon: 'arrow_forward' }
+  const selectedOwnership = config.ownership.find(item => item.value === ownership)
+  const own = selectedOwnership ? { label: `From: ${selectedOwnership.label.replace("It's ", '')}`, icon: selectedOwnership.icon } : { label: 'Selected content', icon: 'person' }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-container-padding-mobile md:p-container-padding-desktop bg-background antialiased">
@@ -70,7 +69,11 @@ export default function PreCheckConfirmPage() {
           <div className="w-28 h-28 rounded-xl overflow-hidden shadow-inner ring-1 ring-outline-variant flex-shrink-0 relative group bg-surface-container">
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
             <div className="w-full h-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-[48px] text-on-surface-variant">description</span>
+              {isScanning ? (
+                 <span className="material-symbols-outlined text-[48px] text-primary animate-spin">refresh</span>
+              ) : (
+                 <span className="material-symbols-outlined text-[48px] text-on-surface-variant">description</span>
+              )}
             </div>
           </div>
 
@@ -88,20 +91,27 @@ export default function PreCheckConfirmPage() {
 
           {/* Personalized Text — dynamic */}
           <p className="text-base font-body-md text-on-surface-variant leading-relaxed max-w-sm mx-auto">
-            {confirmationText[destination]}
+             {scanError ? (
+                <span className="text-error">{scanError}</span>
+             ) : isScanning ? (
+                <span>Analyzing your content mindfully...</span>
+             ) : (
+                `We'll check this for ${dest.label.toLowerCase()} before you decide what to do next.`
+             )}
           </p>
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row justify-between items-center w-full mt-2 pt-6 border-t border-surface-variant gap-3">
-            <Link to="/check/context" className="text-on-surface-variant font-medium hover:text-on-surface transition-colors flex items-center px-2 py-2 rounded-lg hover:bg-surface-container">
+            <Link to="/check/context" className={`text-on-surface-variant font-medium hover:text-on-surface transition-colors flex items-center px-2 py-2 rounded-lg hover:bg-surface-container ${isScanning ? 'pointer-events-none opacity-50' : ''}`}>
               Edit
             </Link>
             <button
-              onClick={() => navigate(`/check/results/${destination}`)}
-              className="px-6 py-2.5 bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-medium rounded-full shadow-[0_4px_14px_0_rgba(0,107,88,0.39)] hover:shadow-[0_6px_20px_rgba(0,107,88,0.23)] transition-all active:scale-95 flex items-center gap-2"
+              onClick={handleStartCheck}
+              disabled={isScanning}
+              className={`px-6 py-2.5 bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-medium rounded-full shadow-[0_4px_14px_0_rgba(0,107,88,0.39)] hover:shadow-[0_6px_20px_rgba(0,107,88,0.23)] transition-all active:scale-95 flex items-center gap-2 ${isScanning ? 'opacity-70 cursor-wait' : ''}`}
             >
-              Start Check
-              <span className="material-symbols-outlined text-[18px] filled-icon">check_circle</span>
+              {isScanning ? 'Scanning...' : 'Start Check'}
+              {!isScanning && <span className="material-symbols-outlined text-[18px] filled-icon">check_circle</span>}
             </button>
           </div>
         </div>

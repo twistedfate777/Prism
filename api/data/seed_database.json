@@ -1,0 +1,17 @@
+[
+  { "event_name": "UNESCO Global MIL Week", "date": "2024-10-24", "last_updated": "2024-10-01", "source": "UNESCO official site" },
+  { "event_name": "Indonesia General Election", "date": "2024-02-14", "last_updated": "2024-02-15", "source": "KPU Indonesia" },
+  { "event_name": "G20 Summit Bali", "date": "2022-11-15", "last_updated": "2022-12-01", "source": "G20 Indonesia Presidency" },
+  { "event_name": "World Press Freedom Day", "date": "2024-05-03", "last_updated": "2024-05-01", "source": "UNESCO" },
+  { "event_name": "Internet Governance Forum", "date": "2024-12-15", "last_updated": "2024-09-01", "source": "IGF Secretariat" },
+  { "event_name": "ASEAN Summit", "date": "2024-10-09", "last_updated": "2024-10-01", "source": "ASEAN Secretariat" },
+  { "event_name": "Indonesia Independence Day", "date": "2024-08-17", "last_updated": "2024-08-17", "source": "Government of Indonesia" },
+  { "event_name": "Digital Literacy National Movement", "date": "2024-06-01", "last_updated": "2024-06-15", "source": "Kominfo" },
+  { "event_name": "Safer Internet Day", "date": "2024-02-06", "last_updated": "2024-02-06", "source": "Insafe/INHOPE" },
+  { "event_name": "International Fact Checking Day", "date": "2024-04-02", "last_updated": "2024-04-01", "source": "IFCN" },
+  { "event_name": "World Telecommunication Day", "date": "2024-05-17", "last_updated": "2024-05-17", "source": "ITU" },
+  { "event_name": "National Cyber Security Awareness", "date": "2024-10-01", "last_updated": "2024-10-01", "source": "BSSN Indonesia" },
+  { "event_name": "Data Privacy Day", "date": "2024-01-28", "last_updated": "2024-01-28", "source": "Council of Europe" },
+  { "event_name": "Asia Media Summit", "date": "2024-06-05", "last_updated": "2024-06-01", "source": "AIBD" },
+  { "event_name": "UN General Assembly", "date": "2024-09-10", "last_updated": "2024-09-10", "source": "United Nations" }
+]
